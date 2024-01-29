@@ -10,7 +10,7 @@ if($type == "LOCALDB"){
 
 }elseif($type == "TESTDB"){
 
-  $servername = "154.41.233.103";
+  $servername = "localhost";
   $username = "u664437076_easy";
   $password = "JY6o8n1T@p";
   $db = "u664437076_easy";
