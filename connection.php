@@ -25,6 +25,20 @@ if($type == "LOCALDB"){
 }
 
 
+
+$allowedOrigins = [
+  "http://localhost:3000",
+  "https://royalplay.live", 
+];
+
+
+if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowedOrigins)) {
+  header("Access-Control-Allow-Origin: " . $_SERVER['HTTP_ORIGIN']);
+  header('Access-Control-Allow-Credentials: true');
+  header('Access-Control-Max-Age: 86400');
+  header("Access-Control-Allow-Headers: Authorization");
+}
+
 // Create connection
 $conn = new mysqli($servername, $username, $password, $db);
 

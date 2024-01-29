@@ -3,19 +3,7 @@
 
 include("../connection.php");
 require("../encryption.php");
-$allowedOrigins = [
-    "http://localhost:3000",
-    "https://royalplay.live", // Add additional origins as needed
-    // Add more origins as needed
-];
 
-// Check if the incoming request's origin is in the allowed list
-if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowedOrigins)) {
-    header("Access-Control-Allow-Origin: " . $_SERVER['HTTP_ORIGIN']);
-    header('Access-Control-Allow-Credentials: true');
-    header('Access-Control-Max-Age: 86400');
-	header("Access-Control-Allow-Headers: Authorization");
-}
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET'){
 	$headers = getallheaders();
