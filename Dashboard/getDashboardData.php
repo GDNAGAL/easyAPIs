@@ -3,14 +3,19 @@
 
 include("../connection.php");
 require("../encryption.php");
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST, GET, DELETE, PUT, PATCH, OPTIONS');
-header('Access-Control-Allow-Headers: token, Content-Type');
-header('Access-Control-Max-Age: 1728000');
-header('Content-Length: 0');
-header('Content-Type: text/plain');
-header('Access-Control-Allow-Origin: *');
-header('Content-Type: application/json');
+$allowedOrigins = [
+    "http://localhost:3000",
+    "https://royalplay.live", // Add additional origins as needed
+    // Add more origins as needed
+];
+
+// Check if the incoming request's origin is in the allowed list
+if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowedOrigins)) {
+    header("Access-Control-Allow-Origin: " . $_SERVER['HTTP_ORIGIN']);
+    header('Access-Control-Allow-Credentials: true');
+    header('Access-Control-Max-Age: 86400');
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'GET'){
 	$headers = getallheaders();
 	if (array_key_exists('Authorization', $headers) && preg_match('/Bearer\s(\S+)/', $headers['Authorization'], $matches)){
