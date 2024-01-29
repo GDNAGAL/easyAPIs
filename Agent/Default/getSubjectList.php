@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$headers = getallheaders();
 	if (array_key_exists('Authorization', $headers) && preg_match('/Bearer\s(\S+)/', $headers['Authorization'], $matches)){
 
-		if(verifyToken($matches[1])){
+		if(verifyTokenA($matches[1])){
 			$ClassRoomGroupID = $_POST['ClassRoomGroupID'];
 
 			$subjectlist = mysqli_query($conn, "SELECT * FROM `defaultsubjects` inner join subject_types on defaultsubjects.SubjectTypeID = subject_types.SubjectTypeID Where ClassRoomGroupID = '$ClassRoomGroupID'");

@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$headers = getallheaders();
 	if (array_key_exists('Authorization', $headers) && preg_match('/Bearer\s(\S+)/', $headers['Authorization'], $matches)){
 
-		if(verifyToken($matches[1])){
+		if(verifyTokenA($matches[1])){
             $agentid = getAgentID($matches[1]);
 			$UserID = $_POST['UserID'];
 			$SchoolID = $_POST['SchoolID'];

@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$headers = getallheaders();
 	if (array_key_exists('Authorization', $headers) && preg_match('/Bearer\s(\S+)/', $headers['Authorization'], $matches)){
 
-		if(verifyToken($matches[1])){
+		if(verifyTokenA($matches[1])){
 			$SubjectID = $_POST['SubjectID'];
 
 			$examlist = mysqli_query($conn, "SELECT * FROM `defaultexams` WHERE ExamID IN (SELECT Distinct ExamIndex FROM `defaultpaper` WHERE SubjectIndex = '$SubjectID')");

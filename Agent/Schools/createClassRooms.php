@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$headers = getallheaders();
 	if (array_key_exists('Authorization', $headers) && preg_match('/Bearer\s(\S+)/', $headers['Authorization'], $matches)){
 
-		if(verifyToken($matches[1])){
+		if(verifyTokenA($matches[1])){
 			$schoolID = $_POST['SchoolID'];
 			$checkDuplicateClassRooms = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as sc FROM `classrooms` WHERE SchoolID = '$schoolID'"));
 			if($checkDuplicateClassRooms['sc'] == 0){
