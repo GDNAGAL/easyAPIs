@@ -1,7 +1,7 @@
 <?php
 // Path : api/Dashboard/getDashboardData
 
-include("../connection.php");
+include("../../connection.php");
 require("../encryption.php");
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET'){

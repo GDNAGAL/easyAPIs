@@ -1,6 +1,6 @@
 <?php
 // Path : api/Subjects/addSubject
-include("../connection.php");
+include("../../connection.php");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$headers = getallheaders();
