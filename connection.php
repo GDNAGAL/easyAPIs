@@ -23,7 +23,11 @@ if($type == "LOCALDB"){
   $db = "easy";
 
 }
+header('Access-Control-Allow-Origin: *');
 
+header('Access-Control-Allow-Methods: GET, POST');
+
+header("Access-Control-Allow-Headers: X-Requested-With");
 // Create connection
 $conn = new mysqli($servername, $username, $password, $db);
 
