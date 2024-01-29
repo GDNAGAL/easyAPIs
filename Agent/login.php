@@ -1,6 +1,6 @@
 <?php
 include("../connection.php");
-require("encryption.php");
+require("../encryption.php");
 date_default_timezone_set("Asia/Calcutta");
 //Validate Login
 if(isset($_POST['login'])){
