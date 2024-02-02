@@ -3,24 +3,15 @@ $type = "TESTDB";   //LIVEDB OR TESTDB OR LOCALDB
 
 if($type == "LOCALDB"){
 
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $db = "easy";
+  $servername = "localhost"; $username = "root"; $password = ""; $db = "easy";
 
 }elseif($type == "TESTDB"){
 
-  $servername = "localhost";
-  $username = "u664437076_easy";
-  $password = "JY6o8n1T@p";
-  $db = "u664437076_easy";
+  $servername = "localhost"; $username = "u664437076_easy"; $password = "JY6o8n1T@p"; $db = "u664437076_easy";
 
 }elseif($type == "LIVEDB"){
 
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $db = "easy";
+  $servername = "localhost"; $username = "root"; $password = ""; $db = "easy";
 
 }
 
@@ -39,6 +30,7 @@ if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowed
   header("Access-Control-Allow-Headers: Authorization");
 }
 
+date_default_timezone_set("Asia/Calcutta");
 // Create connection
 $conn = new mysqli($servername, $username, $password, $db);
 
@@ -90,7 +82,6 @@ function getAgentID($token){
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-//echo "Connected successfully";
 
 
 ?>

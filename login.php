@@ -1,7 +1,7 @@
 <?php
 include("connection.php");
 require("encryption.php");
-date_default_timezone_set("Asia/Calcutta");
+
 //Validate Login
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$myusername = mysqli_real_escape_string($conn,$_POST['username']);
