@@ -12,6 +12,7 @@ if(isset($_POST['login'])){
 		$row = mysqli_fetch_assoc($result);
 		if($row['SchoolStatus'] == 1){
 			$loginDateTime = date("Y-m-d h:m:s"); 
+			$row['loginDateTime'] = $loginDateTime;
 			$schoolArray = [];
 			$schoolArray[] = $row;
 			$accesstoken = encrypt(json_encode($schoolArray));
