@@ -1,6 +1,6 @@
 <?php
 // error_reporting(0);
-include("encryption.php");
+include("../encryption.php");
 
 // Initialize $re to an empty string
 $re = '';
