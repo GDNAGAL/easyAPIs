@@ -3,7 +3,7 @@ include("connection.php");
 require("encryption.php");
 date_default_timezone_set("Asia/Calcutta");
 //Validate Login
-if(isset($_POST['login'])){
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$myusername = mysqli_real_escape_string($conn,$_POST['username']);
     $mypassword = mysqli_real_escape_string($conn,$_POST['password']); 
 
@@ -44,7 +44,7 @@ if(isset($_POST['login'])){
 
 	http_response_code(401);
     header('Content-Type: application/json');
-    $data = array ("Message" => "UnAuthorized Access");
+    $data = array ("Message" => "Only POST Method Allowed.");
     echo json_encode( $data );
 	
 }
