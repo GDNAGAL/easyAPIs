@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 					$row['DateofBirth'] = $date->format('d-m-Y');
 					$row['COMSubjects'] = [];
 					$row['OPTSubjects'] = [];
-
+					$row['Subjects']=[];
 					$selectSubject = mysqli_query($conn, "SELECT Distinct ed.SubjectID, su.SubjectName FROM examdesign ed JOIN subjects su ON ed.SubjectID = su.SubjectID WHERE ed.ClassRoomID = '$ClassRoomID' AND SubjectTypeID = 1");
 					while($subjectRow = mysqli_fetch_assoc($selectSubject)){
 						$subjectID = $subjectRow['SubjectID'];
@@ -47,7 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 							$subjectRow['Exams'][] = $examNameRow;
 						}
-						$row['COMSubjects'][] = $subjectRow;
+						// $row['COMSubjects'][] = $subjectRow;
+						$row['Subjects'][] = $subjectRow;
 					}
 
 
@@ -71,7 +72,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 							$subjectRow['Exams'][] = $examNameRow;
 						}
-						$row['OPTSubjects'][] = $subjectRow;
+						// $row['OPTSubjects'][] = $subjectRow;
+						$row['Subjects'][] = $subjectRow;
 					}
 
 
