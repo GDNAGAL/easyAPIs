@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 							$subjectRow['Exams'][] = $examNameRow;
 						}
 						// $row['COMSubjects'][] = $subjectRow;
-						$row['Subjects'][] = $subjectRow;
+						$row['Subjects']['COMSubjects'] = $subjectRow;
 					}
 
 
@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 							$subjectRow['Exams'][] = $examNameRow;
 						}
 						// $row['OPTSubjects'][] = $subjectRow;
-						$row['Subjects'][] = $subjectRow;
+						$row['Subjects']['OPTSubjects'] = $subjectRow;
 					}
 
 
