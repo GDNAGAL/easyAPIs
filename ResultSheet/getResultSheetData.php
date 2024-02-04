@@ -10,12 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $sid = getSchoolID($matches[1]);
 			$selectSchool = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SchoolName,SchoolAddress FROM `schools` WHERE SchoolID = '$sid' limit 1"));
 			$SectionID = $_POST['SectionID'];
-			$StudentID = $_POST['StudentID'];
-			if ($StudentID == 'all') {
-				$selectstudentlist = mysqli_query($conn, "SELECT StudentID,StudentName,Gender,StudentFatherName,StudentMotherName,DateofBirth,students.ClassRoomID,students.SectionID,classrooms.ClassIndex,AdmissionNo,RollNo,ClassRoomName,SectionText,StudentPhoto FROM `students` INNER JOIN `classrooms` ON students.ClassRoomID = classrooms.ClassRoomID INNER JOIN `classrooms_sections` ON students.SectionID = classrooms_sections.SectionID  WHERE students.SchoolID = '$sid' AND students.SectionID = '$SectionID'");
-			}else{
-				$selectstudentlist = mysqli_query($conn, "SELECT StudentID,StudentName,Gender,StudentFatherName,StudentMotherName,DateofBirth,students.ClassRoomID,students.SectionID,classrooms.ClassIndex,AdmissionNo,RollNo,ClassRoomName,SectionText,StudentPhoto FROM `students` INNER JOIN `classrooms` ON students.ClassRoomID = classrooms.ClassRoomID INNER JOIN `classrooms_sections` ON students.SectionID = classrooms_sections.SectionID  WHERE students.SchoolID = '$sid' AND students.SectionID = '$SectionID' AND StudentID = '$StudentID'");
-			}
+			
+			$selectstudentlist = mysqli_query($conn, "SELECT StudentID,StudentName,Gender,StudentFatherName,StudentMotherName,DateofBirth,students.ClassRoomID,students.SectionID,classrooms.ClassIndex,AdmissionNo,RollNo,ClassRoomName,SectionText,StudentPhoto FROM `students` INNER JOIN `classrooms` ON students.ClassRoomID = classrooms.ClassRoomID INNER JOIN `classrooms_sections` ON students.SectionID = classrooms_sections.SectionID  WHERE students.SchoolID = '$sid' AND students.SectionID = '$SectionID'");
 
 			http_response_code(200);
 			header('Content-Type: application/json');
@@ -89,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 				$data = array ("Status"=> "OK","Message" => "Success", "StudentList" => $records, "School"=>$selectSchool);
 				echo json_encode( $data );
 			}else{
-				$data = array ("Status"=> "NOT_FOUND","Message" => "No Student Found");
+				$data = array ("Status"=> "NOT_FOUND","Message" => "No Data Found");
 				echo json_encode( $data );
 			}
 			
